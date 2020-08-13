@@ -1,0 +1,58 @@
+<div>
+  <div style="width: 25%; height: 25%; background-color: green; float:left;"class="image">
+  <img style="width: 100%;" src="{{selectedManager.img}}">
+  </div>
+  <div style="width: 75%; height: 75%;  float:right;" class="generalinfo">
+    <br>
+  <h1 style="text-align:center;font-size: xx-large;">{{selectedManager.firstName}} {{selectedManager.lastName}}</h1>
+  <mat-divider></mat-divider>
+  <h3>Phone:
+    <br>
+    {{selectedManager.phone}}</h3>
+  <h3>Email:
+    <br>
+    {{selectedManager.email}}</h3>
+  <h3>Restaurant:
+    <br>
+    {{selectedManager.header}}</h3>
+    <h3>Restaurant Email:
+      <br>
+      {{selectedManager.body}}</h3>
+  <h3>Location:
+    <br>
+    {{selectedManager.description}}</h3>
+  <h3>Postal Code:
+    <br>
+    {{selectedManager.post_code}}</h3>
+  <h3>Province Code:
+    <br>
+    {{selectedManager.provinceCode}}</h3>
+  <h3>Country:
+    <br>
+    {{selectedManager.country}}</h3>
+    <p align="center">
+      <button mat-raised-button color="primary"(click)="addSection()">Add Section</button>
+    </p>
+    <p align="center">
+      <button mat-raised-button color="primary"(click)="addItem()">Add Item</button>
+    </p>
+  </div>
+</div>
+
+<div>
+  <div style="width: 75%; height: 55%;  float:right;" class="generalinfo">
+    <br>
+      <h1 style="text-align:center;font-size: xx-large;">List of Sections</h1>
+      <mat-divider></mat-divider>
+      <p *ngFor="let section of sections">{{section.id}} - {{section.sectionName}}</p>
+  </div>
+</div>
+<div>
+  <div style="width: 75%; height: 55%;  float:right;" class="generalinfo">
+    <br>
+      <h1 style="text-align:center;font-size: xx-large;">List of Items</h1>
+      <mat-divider></mat-divider>
+      <p *ngFor="let item of restaurantitems">  {{item.id}} - {{item.name}} - {{item.desc}} - {{item.unit}} - {{item.size}} - {{item.price}} - {{item.sectionID}} - {{item.sectionName}}</p>
+  </div>
+</div>
+

@@ -1,0 +1,35 @@
+<div class="container margin" fxLayout="row wrap" fxLayoutAlign="space-evenly stretch" fxLayoutGap="20px">
+  <header style="font-size:x-large">List of Sections</header>
+    <mat-card fxFlexFill fxFlex="0 1 calc(20% - 20px)" class="restaurant" fxLayout="column" tabindex="0" *ngFor="let section of sections">
+    <mat-card-title-group>
+      <mat-card-subtitle class='subtitle' align="left"style="font-size:medium;line-height: 1; color:#000000">
+        {{section.id}} - {{section.sectionName}}
+      </mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card>
+</div>
+
+<br>
+<div style="display: flex; justify-content: center;">
+
+<form [formGroup]=addSectionForm action="add-menusection.component.ts">
+
+    <mat-card class="example-container">
+    <h2 align="center">Add Menu Section</h2>
+    <p align="center">Fill out all the required fields:</p>
+        <p align="center">
+            <mat-form-field   hintLabel="Minimum 2 characters" appearance="outline">
+                <mat-label>Section Name</mat-label>
+                    <input matInput #sectionName pattern=".{2,100}"  type="text" maxlength="100" placeholder="Ex. Special Today" formControlName="sectionName" autofocus="on">
+                <mat-hint align="end">{{sectionName.value?.length || 0}}/100</mat-hint>
+            </mat-form-field>
+            </p>
+
+            <section align="center">
+                <div class="example-button-row">
+                  <button mat-raised-button color="primary" (click)="createSection()">Create Section</button>
+                </div>
+              </section>
+            </mat-card>
+</form>
+</div>

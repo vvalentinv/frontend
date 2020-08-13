@@ -1,0 +1,12 @@
+.menudescription{
+  text-align: center;
+}
+.table{
+text-align: left;
+    width: 100%;
+border: 1rem;
+}
+.reservation-button {
+  margin-right: 8px;
+  float: right;
+}

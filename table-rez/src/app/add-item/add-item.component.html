@@ -1,0 +1,69 @@
+<div class="container margin" fxLayout="row wrap" fxLayoutAlign="space-evenly stretch" fxLayoutGap="20px">
+  <header style="font-size:x-large">List of Items</header>
+  <mat-card fxFlexFill fxFlex="0 1 calc(20% - 20px)" class="restaurant" fxLayout="column" tabindex="0" *ngFor="let item of restaurantitems">
+    <mat-card-title-group>
+      <mat-card-subtitle class='subtitle' align="left"style="font-size:medium;line-height: 1; color:#000000">
+        {{item.id}} - {{item.name}} - {{item.desc}} - {{item.unit}} - {{item.size}} - {{item.price}} - {{item.sectionID}} - {{item.sectionName}}
+      </mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card>
+</div>
+
+<br>
+<div style="display: flex; justify-content: center;">
+
+<form [formGroup]=addItemForm action="add-menusection.component.ts">
+
+    <mat-card class="example-container">
+    <h2 align="center">Add Item</h2>
+    <p align="center">Fill out all the required fields:</p>
+        <p align="center">
+            <mat-form-field   hintLabel="Minimum 2 characters" appearance="outline">
+                <mat-label>Item Name</mat-label>
+                    <input matInput #itemName pattern=".{2,100}"  type="text" maxlength="100" placeholder="Ex. Special Today" formControlName="itemName" autofocus="on">
+                <mat-hint align="end">{{itemName.value?.length || 0}}/100</mat-hint>
+            </mat-form-field>
+            </p>
+            <p align="center">
+              <mat-form-field   hintLabel="Minimum 2 characters" appearance="outline">
+                  <mat-label>Item Description</mat-label>
+                      <input matInput #itemDescription pattern=".{2,100}"  type="text" maxlength="100" placeholder="Ex. Special Today" formControlName="itemDescription" autofocus="on">
+                  <mat-hint align="end">{{itemDescription.value?.length || 0}}/100</mat-hint>
+              </mat-form-field>
+              </p>
+              <p align="center">
+                <mat-form-field   hintLabel="Minimum 2 characters" appearance="outline">
+                  <mat-label>Measurement Unit</mat-label>
+                      <input matInput #measurementUnit pattern=".{2,10}"  type="text" maxlength="10" placeholder="Ex. grams or pieces" formControlName="measurementUnit" autofocus="on">
+                  <mat-hint align="end">{{measurementUnit.value?.length || 0}}/10</mat-hint>
+              </mat-form-field>
+                <mat-form-field  hintLabel="Integer Number" appearance="outline">
+                  <mat-label>Size</mat-label>
+                      <input matInput #size type="number" pattern=".{1,11}"maxlength="11" placeholder="Ex. 1 or 450" formControlName="size">
+                  <mat-hint align="end">{{size.value?.length || 0}}/11</mat-hint>
+              </mat-form-field>
+              <mat-form-field  hintLabel="Selling Price" appearance="outline">
+                <mat-label>Price</mat-label>
+                    <input matInput #itemPrice type="number" pattern=".{1,7}"maxlength="7" placeholder="Ex. 9.99 or 1.99" formControlName="itemPrice">
+                <mat-hint align="end">{{itemPrice.value?.length || 0}}/7</mat-hint>
+            </mat-form-field>
+                </p>
+                <p align="center">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Select an Section</mat-label>
+                    <mat-select [(ngModel)]="selectedSection" formControlName="sectionID">
+                      <mat-option *ngFor="let section of sections" [value]="section.id">{{section.id}} - {{section.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </p>
+
+                  <p>You selected: {{selectedSection}}</p>
+
+            <section align="center">
+                <div class="example-button-row">
+                  <button mat-raised-button color="primary" (click)="createItem()">Create Item</button>
+                </div>
+              </section>
+            </mat-card>
+</form>
+</div>

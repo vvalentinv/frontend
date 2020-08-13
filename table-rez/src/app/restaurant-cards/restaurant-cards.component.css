@@ -1,0 +1,23 @@
+.container{
+  height: 100vh;
+  overflow: hidden;
+  padding: 0 ;
+}
+
+.restaurant{
+  width: 15%;
+  text-align: center;
+  margin-bottom: 20px; /* same as fxLayoutGap for even distribution */
+  float: left;
+  margin-left: 20px;
+}
+.title{
+  width:100%;
+  border-radius: 4px;
+  font-size: xx-large;
+  line-height: normal;
+  padding: 5px;
+}
+.image{
+  background-size: cover;
+}

@@ -1,0 +1,10 @@
+.space{
+  flex:1 1 auto;
+}
+.button{
+  margin-right: 10px;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  cursor: pointer;
+}

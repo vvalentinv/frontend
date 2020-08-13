@@ -1,0 +1,38 @@
+
+<mat-toolbar class="header"color='primary'>
+  <img class = "img" width="30" height="30" src="./assets/logo.jpeg">&nbsp;
+ <span style="cursor: pointer;" routerLink="/"> {{title}}</span>
+  <span class="space"></span>
+
+  <!--<button class="button" routerLink="/register" mat-raised-button color='primary'>Register</button>
+  <button class="button" routerLink="/login" mat-raised-button color='primary'>Login</button>-->
+  <mat-form-field appearance="fill">
+    <mat-label>Register</mat-label>
+    <mat-select name="registration">
+      <mat-option routerLink="/register">
+      Customer
+      </mat-option>
+      <mat-option routerLink="/register-owner">
+        Restaurant owner
+        </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Login</mat-label>
+    <mat-select name="login">
+      <mat-option routerLink="/login" >
+       Customer
+      </mat-option>
+      <mat-option routerLink="/login-owner" >
+        Restaurant Owner
+       </mat-option>
+       <mat-option routerLink="/login-manager" >
+        Manager
+       </mat-option>
+       <mat-option routerLink="/login" >
+        Host
+       </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-toolbar>
+

@@ -1,0 +1,59 @@
+<h1>Table Rezervation for {{selectedRestaurant.name}}</h1>
+<form [formGroup]=reservationForm action="reservation.component.ts">
+  <div style="width: 50%; float:left">
+ <h2>Reservation time: {{bookingTime}}</h2>
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Reservation date</mat-label>
+    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" #calendarDate formControlName="calendarDate"/>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+    <h4>Select Table Section</h4>
+  <mat-form-field appearance="fill">
+    <mat-select name="tableSection" #tableSection formControlName="tableSection" [(value)]="selected">
+      <mat-label>Table Section</mat-label>
+      <mat-option *ngFor="let tableSection of tableSections" [value]="tableSection.tableSectionName">
+        {{tableSection.tableSectionName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h4>Enter Number of People</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Capacity</mat-label>
+    <input matInput #capacity formControlName="capacity"/>
+  </mat-form-field>
+  <h4>Enter contact email address</h4>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput #email formControlName="email"/>
+  </mat-form-field>
+
+
+
+</div>
+</form>
+
+<div>
+  <button mat-raised-button color="primary" (click)="checkCustomer(email.value)">Create reservation</button>
+</div>
+
+
+<div style="width:50%; float:right;display: flex; justify-content: center; font-size: large;" [hidden]="details">
+  <mat-card>
+
+  <mat-card-header> Reservation Details</mat-card-header><br>
+ <mat-card-content>
+  Reservation for {{bookingTime}} pm&nbsp;ON {{calendarDate.value}}<br>
+  Number of people: {{capacity.value}}<br>
+  Prefered table Section: {{tableSection.value}}<br>
+<br>
+Contact email address:&nbsp;
+{{email.value}}<br>
+</mat-card-content>
+<mat-card-actions>
+<button mat-raised-button color="primary" (click)="createBooking(selectedUser.id)" routerLink="/">Ok</button>
+</mat-card-actions>
+</mat-card>
+</div>
+

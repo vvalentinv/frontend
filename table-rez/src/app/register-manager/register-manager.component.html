@@ -1,0 +1,60 @@
+<br>
+<div style="display: flex; justify-content: center;">
+
+<form [formGroup]=registerForm action="register-manager.component.ts">
+
+    <mat-card class="example-container">
+    <h2 align="center">Restaurant Manager Registration</h2>
+    <p align="center">Fill out all the required fields:</p>
+        <p align="center">
+            <mat-form-field   hintLabel="Minimum 2 characters" appearance="outline">
+                <mat-label>First (Given) Name</mat-label>
+                    <input matInput #firstName pattern=".{2,30}"  type="text" maxlength="30" placeholder="Ex. John" formControlName="firstName" autofocus="on">
+                <mat-hint align="end">{{firstName.value?.length || 0}}/30</mat-hint>
+            </mat-form-field>
+        <span style="margin-left: 3em;"></span>
+                <mat-form-field hintLabel="Minimum 2 characters" appearance="outline" >
+                    <mat-label>Last (Family) Name</mat-label>
+                        <input matInput #lastName type="text" pattern=".{2,30}" maxlength="30" placeholder="Ex. John" formControlName="lastName">
+                    <mat-hint align="end">{{lastName.value?.length || 0}}/30</mat-hint>
+                </mat-form-field>
+            </p>
+            <p align="center">
+                <mat-form-field hintLabel="Your valid email address" appearance="outline">
+                    <mat-label>Email Address</mat-label>
+                        <input matInput #email type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" maxlength="50" placeholder="Ex. john@aol.com" formControlName="email">
+                    <mat-hint align="end">{{email.value?.length || 0}}/50</mat-hint>
+                    <mat-error *ngIf="registerForm.get('email').hasError('pattern')">Invalid email format</mat-error>
+                </mat-form-field>
+                <span style="margin-left: 3em;"></span> 
+                <mat-form-field  hintLabel="Between 10 and 11 digits" appearance="outline">
+                    <mat-label>Phone</mat-label>
+                        <input matInput #phone type="number" pattern=".{10,14}"maxlength="14" placeholder="Ex. 6475551234 or 0016475551234" formControlName="phone">
+                    <mat-hint align="end">{{phone.value?.length || 0}}/14</mat-hint>
+                </mat-form-field>
+            </p>
+            <p align="center">
+                <mat-form-field hintLabel="min 8 characters" appearance="outline">
+                    <mat-label>Password</mat-label>
+                        <input matInput #password type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$" maxlength="20" formControlName="password">
+                    <mat-hint align="end">{{password.value?.length || 0}}/20</mat-hint>
+                    <mat-error *ngIf="registerForm.get('password').hasError('pattern')">Missing an upper case or lower case letter or a digit or a symbol(!@#$%^&*()_+,.;'[]')</mat-error>
+                </mat-form-field>
+                <span style="margin-left: 3em;"></span>
+                <mat-form-field  hintLabel="Same as Password" appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                        <input matInput #confirmPassword type="password" maxlength="20" placeholder="Match the password field" formControlName="confirmPassword">
+                    <mat-hint align="end">{{confirmPassword.value?.length || 0}}/20</mat-hint>
+                    <span style="background-color: red;" *ngIf="registerForm.errors?.mismatchedFields">Passwords do not match
+                      </span>
+                 </mat-form-field>
+            </p>
+
+            <section align="center">
+                <div class="example-button-row">
+                  <button mat-raised-button color="primary" (click)="createManager()">Register Now</button>
+                </div>
+              </section>
+            </mat-card>
+</form>
+</div>
